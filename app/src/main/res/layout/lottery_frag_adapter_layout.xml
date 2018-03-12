@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/lotter_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="开奖界面"
+            android:textColor="@color/text_black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/lotter_item_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/lotter_item_title"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@+id/lotter_item_title"
+            android:text="开奖界面"
+            android:textColor="@color/text_grey"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/lotter_item_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/lotter_item_title"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@+id/lotter_item_num"
+            android:text="开奖界面"
+            android:textColor="@color/text_grey"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:id="@+id/lottery_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_below="@+id/lotter_item_num"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</LinearLayout>
