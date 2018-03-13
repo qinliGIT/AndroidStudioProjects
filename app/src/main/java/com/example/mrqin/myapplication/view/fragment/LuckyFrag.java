@@ -27,5 +27,6 @@ public class LuckyFrag extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //测试提交新版本
     }
 }
