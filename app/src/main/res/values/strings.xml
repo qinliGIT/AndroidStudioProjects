@@ -3,4 +3,6 @@
     <string name="title_home">开奖查询</string>
     <string name="title_dashboard">我的运势</string>
     <string name="title_notifications">我的小Q</string>
+    <string name="title_lottery_more">详细开奖查询</string>
+
 </resources>

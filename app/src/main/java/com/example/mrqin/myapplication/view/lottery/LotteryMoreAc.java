@@ -1,72 +1,76 @@
-package com.example.mrqin.myapplication.view.fragment;
+package com.example.mrqin.myapplication.view.lottery;
 
-import android.app.ActivityOptions;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.ImageView;
 
 import com.example.mrqin.myapplication.R;
 import com.example.mrqin.myapplication.adapter.LotteryAdapter;
 import com.example.mrqin.myapplication.model.LotteryAdapterBean;
 import com.example.mrqin.myapplication.model.LotteryBean;
 import com.example.mrqin.myapplication.utils.APPID;
-import com.example.mrqin.myapplication.utils.TextViewUtils;
-import com.example.mrqin.myapplication.view.lottery.LotteryMoreAc;
+import com.example.mrqin.myapplication.view.BaseActivity;
 import com.google.gson.Gson;
 import com.show.api.ShowApiRequest;
 
 import java.lang.ref.WeakReference;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+
 
 /**
- * Created by Mrqin on 2018/3/9.
+ * 彩票更多开奖信息查询
  */
-
-public class LotteryFrag extends Fragment {
-    private View view;
+public class LotteryMoreAc extends BaseActivity {
     private MyHandler mHandler;
-
+    private ImageView ll_TitleBar_back;
     private RecyclerView mRecyclerView;
     private List<LotteryBean> mDatas = new ArrayList<>();
     private List<LotteryAdapterBean> mDataAd = new ArrayList<>();
     private LotteryAdapter mAdapter;
 
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS", Locale.getDefault());
+    private String lotteryName = "ssq";
+
     @Override
-    public View onCreateView(LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.frag_layout_lottery, null);
-        return view;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.lottery_more_layout);
+        lotteryName = getIntent().getStringExtra("name");
+        if (lotteryName == null) {
+            lotteryName = "ssq";
+        }
+        init();
     }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-
+    private void init() {
         mHandler = new MyHandler(this);
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.id_recyclerview);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        ll_TitleBar_back = (ImageView) findViewById(R.id.ll_TitleBar_back);
+        ll_TitleBar_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LotteryMoreAc.this.finish();
+            }
+        });
+        mRecyclerView = (RecyclerView) findViewById(R.id.id_recyclerview_lottery_more);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(LotteryMoreAc.this));
 
         new Thread() {
             //在新线程中发送网络请求
             public void run() {
                 String appid = APPID.APP_ID;//要替换成自己的
                 String secret = APPID.APP_SCREAT;//要替换成自己的
-                final String res = new ShowApiRequest("http://route.showapi.com/44-1", appid, secret)
-                        .addTextPara("code", "ssq|dlt|fc3d|pl3|pl5|qxc|qlc")
+                final String res = new ShowApiRequest("http://route.showapi.com/44-2", appid, secret)
+                        .addTextPara("code", lotteryName)
+                        .addTextPara("endTime", sdf.format(new Date()))
+                        .addTextPara("count", "10")
                         .post();
                 System.out.println(res);
                 mHandler.obtainMessage(APPID.MSG_DATA_SUCCESS_LOTTERY_FRG, res).sendToTarget();
@@ -81,39 +85,23 @@ public class LotteryFrag extends Fragment {
             String num = "第" + mDatas.get(0).getShowapi_res_body().getResult().get(i).getExpect() + "期";
             String time = mDatas.get(0).getShowapi_res_body().getResult().get(i).getTime();
             String code = mDatas.get(0).getShowapi_res_body().getResult().get(i).getOpenCode();
-            String name = mDatas.get(0).getShowapi_res_body().getResult().get(i).getCode();
+            String name = mDatas.get(0).getShowapi_res_body().getResult().get(i).getName();
             mDataAd.add(new LotteryAdapterBean(title, num, time, code, name));
         }
-        mRecyclerView.setAdapter(mAdapter = new LotteryAdapter(getActivity(), mDataAd));
-
-        //调用方法,传入一个接口回调
-        mAdapter.setItemClickListener(new LotteryAdapter.MyItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                LotteryAdapterBean bean = mDataAd.get(position);
-                Intent in = new Intent(getActivity(), LotteryMoreAc.class);
-                in.putExtra("name", bean.getName());
-                if (android.os.Build.VERSION.SDK_INT > 20) {
-                    startActivity(in, ActivityOptions.makeSceneTransitionAnimation(getActivity(), mRecyclerView, "transitionImg").toBundle());
-                } else {
-                    startActivity(in);
-                }
-            }
-        });
-
+        mRecyclerView.setAdapter(mAdapter = new LotteryAdapter(LotteryMoreAc.this, mDataAd));
     }
 
     static class MyHandler extends Handler {
-        // WeakReference to the outer class's instance.
-        private WeakReference<LotteryFrag> mOuter;
 
-        private MyHandler(LotteryFrag outer) {
-            mOuter = new WeakReference<LotteryFrag>(outer);
+        private WeakReference<LotteryMoreAc> mOuter;
+
+        private MyHandler(LotteryMoreAc outer) {
+            mOuter = new WeakReference<LotteryMoreAc>(outer);
         }
 
         @Override
         public void handleMessage(Message msg) {
-            LotteryFrag outer = mOuter.get();
+            LotteryMoreAc outer = mOuter.get();
             if (outer != null) {
                 //操作
                 switch (msg.what) {

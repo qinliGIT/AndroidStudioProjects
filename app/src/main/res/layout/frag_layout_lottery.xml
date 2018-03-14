@@ -8,6 +8,7 @@
         android:id="@+id/id_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:transitionName="transitionImg"
         android:divider="@color/text_grey"
         android:dividerHeight="10dp" />
 </LinearLayout>
