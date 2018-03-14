@@ -3,8 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <GridView
+        android:id="@+id/luck_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="运势界面"/>
+        android:layout_height="wrap_content"
+        android:listSelector="@color/translate"
+        android:layout_marginTop="10dp"
+        android:numColumns="3"
+        android:verticalSpacing="10dp" >
+    </GridView>
+
 </LinearLayout>

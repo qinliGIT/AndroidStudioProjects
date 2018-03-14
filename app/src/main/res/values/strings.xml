@@ -5,4 +5,18 @@
     <string name="title_notifications">我的小Q</string>
     <string name="title_lottery_more">详细开奖查询</string>
 
+    <string-array name="ac_marry_constellation">
+        <item> 白羊座\n3.21&#8211;4.19</item>
+        <item> 金牛座\n4.20&#8211;5.20</item>
+        <item> 雙子座\n5.21&#8211;6.21</item>
+        <item> 巨蟹座\n6.22&#8211;7.22</item>
+        <item> 獅子座\n7.23&#8211;8.22</item>
+        <item> 處女座\n8.23&#8211;9.22</item>
+        <item> 天秤座\n9.23&#8211;10.23</item>
+        <item> 天蠍座\n10.24&#8211;11.22</item>
+        <item> 射手座\n11.23&#8211;12.21</item>
+        <item> 摩羯座\n12.22&#8211;1.19</item>
+        <item> 水瓶座\n1.20&#8211;2.18</item>
+        <item> 雙魚座\n2.19&#8211;3.20</item>
+    </string-array>
 </resources>

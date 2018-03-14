@@ -55,7 +55,6 @@ public class LotteryFrag extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
         mHandler = new MyHandler(this);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.id_recyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
