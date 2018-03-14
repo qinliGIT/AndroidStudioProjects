@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.example.mrqin.myapplication.R;
@@ -45,6 +46,15 @@ public class LuckyFrag extends Fragment {
         luck_list = view.findViewById(R.id.luck_list);
         adapter = new LuckGridAdapter(getContext(), item_constellation_img, item_more_constellation_txt);
         luck_list.setAdapter(adapter);
+
+        luck_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i){
+
+                }
+            }
+        });
     }
 
     private void init() {

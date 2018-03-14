@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         adapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), list);
         myViewPager.setAdapter(adapter);
         myViewPager.setCurrentItem(0);  //初始化显示第一个页面
+        myViewPager.setOffscreenPageLimit(3);
     }
 
 
