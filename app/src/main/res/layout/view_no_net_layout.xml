@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/noNetLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/text_white"
+    android:visibility="gone">
+
+    <TextView
+        android:id="@+id/no_net"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/refreshBtn"
+        android:layout_centerHorizontal="true"
+        android:text="@string/lotter_no_net"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/refreshBtn"
+        android:layout_width="108dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/no_net_work_shape"
+        android:gravity="center"
+        android:text="@string/lottery_net_refresh"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp" />
+
+</RelativeLayout>

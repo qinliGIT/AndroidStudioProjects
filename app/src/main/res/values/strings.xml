@@ -4,6 +4,22 @@
     <string name="title_dashboard">我的运势</string>
     <string name="title_notifications">我的小Q</string>
     <string name="title_lottery_more">详细开奖查询</string>
+    <string name="lotter_no_net">无网络链接</string>
+    <string name="lottery_net_refresh">刷新</string>
+    <string name="luck_more_txt">星座运势</string>
+    <string name="luck_love_star">爱情指数</string>
+    <string name="luck_money_star">财务指数</string>
+    <string name="luck_all_star">总体指数</string>
+    <string name="luck_work_star">工作指数</string>
+    <string name="lucky_num">幸运数字</string>
+    <string name="lucky_time_color">幸运颜色</string>
+
+    <string name="work_txt">工作运势</string>
+    <string name="love_txt">爱情运势</string>
+    <string name="money_txt">财务运势</string>
+    <string name="general_txt">整体运势</string>
+    <string name="day_notice">今日注意</string>
+
 
     <string-array name="ac_marry_constellation">
         <item> 白羊座\n3.21&#8211;4.19</item>

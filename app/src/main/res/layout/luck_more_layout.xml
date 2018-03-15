@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/title_lottery_more"
+            android:text="@string/luck_more_txt"
             android:textColor="@color/text_white"
             android:textSize="18sp" />
     </LinearLayout>
@@ -34,7 +34,7 @@
         android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/id_recyclerview_lottery_more"
+            android:id="@+id/id_recyclerview_luck_more"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@color/text_grey"

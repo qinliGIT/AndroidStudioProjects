@@ -3,6 +3,8 @@
     package="com.example.mrqin.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET">F</uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/logo"
@@ -20,18 +22,21 @@
         </activity>
         <activity
             android:name=".view.BaseActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".view.logo.AcLeadPage"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".view.lottery.LotteryMoreAc"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".view.lottery.LuckMoreAc"
+            android:screenOrientation="portrait"/>
 
     </application>
 

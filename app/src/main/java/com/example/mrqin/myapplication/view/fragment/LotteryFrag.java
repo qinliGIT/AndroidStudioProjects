@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +14,9 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +25,7 @@ import com.example.mrqin.myapplication.adapter.LotteryAdapter;
 import com.example.mrqin.myapplication.model.LotteryAdapterBean;
 import com.example.mrqin.myapplication.model.LotteryBean;
 import com.example.mrqin.myapplication.utils.APPID;
+import com.example.mrqin.myapplication.utils.NetworkUtil;
 import com.example.mrqin.myapplication.utils.TextViewUtils;
 import com.example.mrqin.myapplication.view.lottery.LotteryMoreAc;
 import com.google.gson.Gson;
@@ -44,6 +48,9 @@ public class LotteryFrag extends Fragment {
     private List<LotteryAdapterBean> mDataAd = new ArrayList<>();
     private LotteryAdapter mAdapter;
 
+    private RelativeLayout noNetLayout;
+    private Button refreshBtn;
+
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -56,9 +63,34 @@ public class LotteryFrag extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         mHandler = new MyHandler(this);
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.id_recyclerview);
+        noNetLayout = view.findViewById(R.id.noNetLayout);
+        refreshBtn = view.findViewById(R.id.refreshBtn);
+        refreshBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (NetworkUtil.isNetworkConnected(getActivity())) {
+                    noNetLayout.setVisibility(View.GONE);
+                    startGetData();
+                } else {
+                    Snackbar.make(view, R.string.lotter_no_net, Snackbar.LENGTH_SHORT).show();
+                }
+            }
+        });
+        mRecyclerView = view.findViewById(R.id.id_recyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        startGetData();
+    }
+
+    private void startGetData() {
+        if (NetworkUtil.getNetworkType(getActivity()) == 0) {
+            noNetLayout.setVisibility(View.VISIBLE);
+        } else {
+            startThread();
+        }
+    }
+
+    private void startThread() {
         new Thread() {
             //在新线程中发送网络请求
             public void run() {
