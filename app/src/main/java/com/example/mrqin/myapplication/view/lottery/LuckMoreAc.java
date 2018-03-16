@@ -8,9 +8,6 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +17,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.mrqin.myapplication.R;
-import com.example.mrqin.myapplication.adapter.LotteryAdapter;
-import com.example.mrqin.myapplication.adapter.LuckAdapter;
-import com.example.mrqin.myapplication.model.LotteryAdapterBean;
-import com.example.mrqin.myapplication.model.LotteryBean;
 import com.example.mrqin.myapplication.model.LuckAdapterBean;
 import com.example.mrqin.myapplication.model.LuckBean;
 import com.example.mrqin.myapplication.utils.APPID;
@@ -35,12 +28,8 @@ import com.google.gson.Gson;
 import com.show.api.ShowApiRequest;
 
 import java.lang.ref.WeakReference;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-import java.util.zip.Inflater;
 
 
 /**
@@ -71,7 +60,7 @@ public class LuckMoreAc extends BaseActivity {
     private static LuckBean luckBean;
 
     private String lotteryName = "ssq";
-    private int position = 0;
+    private int starPosition = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +70,7 @@ public class LuckMoreAc extends BaseActivity {
         if (lotteryName == null) {
             lotteryName = "ssq";
         }
-        position = getIntent().getIntExtra("position",0);
+        starPosition = getIntent().getIntExtra("position", 0);
         init();
         initData();
     }
@@ -144,7 +133,7 @@ public class LuckMoreAc extends BaseActivity {
                 String appid = APPID.APP_ID;//要替换成自己的
                 String secret = APPID.APP_SCREAT;//要替换成自己的
                 final String res = new ShowApiRequest("http://route.showapi.com/872-1", appid, secret)
-                        .addTextPara("star", TextViewUtils.getStar(position))
+                        .addTextPara("star", TextViewUtils.getStar(starPosition))
                         .addTextPara("needTomorrow", "1")
                         .addTextPara("needWeek", "1")
                         .addTextPara("needMonth", "1")
@@ -186,7 +175,7 @@ public class LuckMoreAc extends BaseActivity {
             TextView day_notice = view.findViewById(R.id.day_notice);
             TextView general_txt = view.findViewById(R.id.general_txt);
             TextView love_txt = view.findViewById(R.id.love_txt);
-            TextView lucky_time_color = view.findViewById(R.id.lucky_time_color);
+            TextView lucky_direction = view.findViewById(R.id.lucky_direction);
             TextView money_txt = view.findViewById(R.id.money_txt);
             TextView work_txt = view.findViewById(R.id.work_txt);
             RatingBar love_star = view.findViewById(R.id.love_star);
@@ -194,22 +183,33 @@ public class LuckMoreAc extends BaseActivity {
             RatingBar summary_star = view.findViewById(R.id.summary_star);
             RatingBar work_star = view.findViewById(R.id.work_star);
             TextView lucky_num = view.findViewById(R.id.lucky_num);
-
+            ImageView luck_star_img = view.findViewById(R.id.luck_star_img);
+            TextView luck_star_name = view.findViewById(R.id.luck_star_name);
             LuckAdapterBean bean = mData.get(position);
 
-            day_notice.setText(bean.getDay_notice());
-            general_txt.setText(bean.getGeneral_txt());
-            money_txt.setText(bean.getMoney_txt());
-            love_txt.setText(bean.getLove_txt());
-            lucky_time_color.setText(bean.getLucky_time_color());
-            work_txt.setText(bean.getWork_txt());
-            lucky_num.setText(bean.getLucky_num());
+            day_notice.setText(getStrIsNull(bean.getDay_notice()));
+            general_txt.setText(getStrIsNull(bean.getGeneral_txt()));
+            money_txt.setText(getStrIsNull(bean.getMoney_txt()));
+            love_txt.setText(getStrIsNull(bean.getLove_txt()));
+            lucky_direction.setText(getStrIsNull(bean.getLucky_direction()));
+            work_txt.setText(getStrIsNull(bean.getWork_txt()));
+            lucky_num.setText(getStrIsNull(bean.getLucky_num()));
             love_star.setRating(bean.getLove_star());
             money_star.setRating(bean.getMoney_star());
             summary_star.setRating(bean.getSummary_star());
             work_star.setRating(bean.getWork_star());
+            luck_star_img.setImageResource(item_constellation_img[starPosition]);
+            luck_star_name.setText(item_more_constellation_txt[starPosition]);
             container.addView(view);
             return view;
+        }
+
+        public String getStrIsNull(String s) {
+            String str = "暂无";
+            if (s == null) {
+                s = str;
+            }
+            return s;
         }
 
         @Override
@@ -236,6 +236,7 @@ public class LuckMoreAc extends BaseActivity {
                     case APPID.MSG_DATA_SUCCESS_LOTTERY_FRG:
                         Gson gson = new Gson();
                         luckBean = gson.fromJson((String) msg.obj, LuckBean.class);
+                        mData.clear();
                         mData.add(getBean(luckBean, 0));
                         mData.add(getBean(luckBean, 1));
                         mData.add(getBean(luckBean, 2));
@@ -254,7 +255,7 @@ public class LuckMoreAc extends BaseActivity {
         String general_txt = null;
         String money_txt = null;
         String love_txt = null;
-        String lucky_time_color = null;
+        String lucky_direction = null;
         String work_txt = null;
         String lucky_num = null;
         int love_star = 0;
@@ -267,7 +268,7 @@ public class LuckMoreAc extends BaseActivity {
                 general_txt = resBody.getDay().getGeneral_txt();
                 money_txt = resBody.getDay().getMoney_txt();
                 love_txt = resBody.getDay().getLove_txt();
-                lucky_time_color = resBody.getDay().getLucky_time_color();
+                lucky_direction = resBody.getDay().getLucky_direction();
                 work_txt = resBody.getDay().getWork_txt();
                 lucky_num = resBody.getDay().getLucky_num();
                 love_star = resBody.getDay().getLove_star();
@@ -280,7 +281,7 @@ public class LuckMoreAc extends BaseActivity {
                 general_txt = resBody.getTomorrow().getGeneral_txt();
                 money_txt = resBody.getTomorrow().getMoney_txt();
                 love_txt = resBody.getTomorrow().getLove_txt();
-                lucky_time_color = resBody.getTomorrow().getLucky_time_color();
+                lucky_direction = resBody.getTomorrow().getLucky_direction();
                 work_txt = resBody.getTomorrow().getWork_txt();
                 lucky_num = resBody.getTomorrow().getLucky_num();
                 love_star = resBody.getTomorrow().getLove_star();
@@ -293,7 +294,7 @@ public class LuckMoreAc extends BaseActivity {
                 general_txt = resBody.getWeek().getGeneral_txt();
                 money_txt = resBody.getWeek().getMoney_txt();
                 love_txt = resBody.getWeek().getLove_txt();
-                lucky_time_color = resBody.getWeek().getLucky_time_color();
+                lucky_direction = resBody.getWeek().getLucky_direction();
                 work_txt = resBody.getWeek().getWork_txt();
                 lucky_num = resBody.getWeek().getLucky_num();
                 love_star = resBody.getWeek().getLove_star();
@@ -306,7 +307,7 @@ public class LuckMoreAc extends BaseActivity {
                 general_txt = resBody.getMonth().getGeneral_txt();
                 money_txt = resBody.getMonth().getMoney_txt();
                 love_txt = resBody.getMonth().getLove_txt();
-                lucky_time_color = resBody.getMonth().getLucky_time_color();
+                lucky_direction = resBody.getMonth().getLucky_direction();
                 work_txt = resBody.getMonth().getWork_txt();
                 lucky_num = resBody.getMonth().getLucky_num();
                 love_star = resBody.getMonth().getLove_star();
@@ -319,7 +320,7 @@ public class LuckMoreAc extends BaseActivity {
                 general_txt = resBody.getYear().getGeneral_txt();
                 money_txt = resBody.getYear().getMoney_txt();
                 love_txt = resBody.getYear().getLove_txt();
-                lucky_time_color = resBody.getYear().getLucky_time_color();
+                lucky_direction = resBody.getYear().getLucky_direction();
                 work_txt = resBody.getYear().getWork_txt();
                 lucky_num = resBody.getYear().getLucky_num();
                 love_star = resBody.getYear().getLove_star();
@@ -328,9 +329,7 @@ public class LuckMoreAc extends BaseActivity {
                 work_star = resBody.getYear().getWork_star();
                 break;
         }
-        LuckAdapterBean bean = new LuckAdapterBean(day_notice, general_txt, null, love_star, love_txt, null, lucky_num, lucky_time_color, money_star, money_txt, summary_star, null, work_star, work_txt);
+        LuckAdapterBean bean = new LuckAdapterBean(day_notice, general_txt, null, love_star, love_txt, lucky_direction, lucky_num, null, money_star, money_txt, summary_star, null, work_star, work_txt);
         return bean;
     }
-
-    ;
 }

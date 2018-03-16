@@ -12,13 +12,13 @@
     <string name="luck_all_star">总体指数</string>
     <string name="luck_work_star">工作指数</string>
     <string name="lucky_num">幸运数字</string>
-    <string name="lucky_time_color">幸运颜色</string>
+    <string name="lucky_direction">幸运方位</string>
 
     <string name="work_txt">工作运势</string>
     <string name="love_txt">爱情运势</string>
     <string name="money_txt">财务运势</string>
     <string name="general_txt">整体运势</string>
-    <string name="day_notice">注意事项</string>
+    <string name="day_notice">小提示</string>
 
 
     <string-array name="ac_marry_constellation">
