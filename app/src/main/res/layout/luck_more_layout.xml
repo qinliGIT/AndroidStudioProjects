@@ -28,18 +28,39 @@
             android:textColor="@color/text_white"
             android:textSize="18sp" />
     </LinearLayout>
+    <!--
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/id_recyclerview_luck_more"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/text_grey"
+                android:dividerHeight="10dp"
+                android:transitionName="transitionImg" />
+
+            <include layout="@layout/view_no_net_layout"></include>
+        </RelativeLayout>
+    -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/id_recyclerview_luck_more"
+        <android.support.design.widget.TabLayout xmlns:lw="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/tabLayout"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            lw:tabIndicatorColor="#833636"
+            lw:tabSelectedTextColor="#de0b3c"
+            lw:tabTextColor="#2232c4" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_content"
+            android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:divider="@color/text_grey"
-            android:dividerHeight="10dp"
-            android:transitionName="transitionImg" />
+            android:layout_below="@+id/tabLayout" />
 
         <include layout="@layout/view_no_net_layout"></include>
     </RelativeLayout>

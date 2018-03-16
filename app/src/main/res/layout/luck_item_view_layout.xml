@@ -6,249 +6,255 @@
     android:orientation="vertical"
     android:padding="6dp">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:orientation="horizontal"
-            android:padding="8dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/luck_all_star"
+                        android:textSize="16sp" />
+
+                    <com.example.mrqin.myapplication.view.custom.RatingBar xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/summary_star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:clickable="false"
+                        app:space="0.4"
+                        app:starDst="@mipmap/bazi_ic_star_2"
+                        app:starNumber="5"
+                        app:starSrc="@mipmap/bazi_ic_star_1"
+                        app:step="1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/luck_love_star"
+                        android:textSize="16sp" />
+
+                    <com.example.mrqin.myapplication.view.custom.RatingBar xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/love_star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:clickable="false"
+                        app:space="0.4"
+                        app:starDst="@mipmap/bazi_ic_star_2"
+                        app:starNumber="5"
+                        app:starSrc="@mipmap/bazi_ic_star_1"
+                        app:step="1" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/luck_money_star"
+                        android:textSize="16sp" />
+
+                    <com.example.mrqin.myapplication.view.custom.RatingBar xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/money_star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:clickable="false"
+                        app:space="0.4"
+                        app:starDst="@mipmap/bazi_ic_star_2"
+                        app:starNumber="5"
+                        app:starSrc="@mipmap/bazi_ic_star_1"
+                        app:step="1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/luck_work_star"
+                        android:textSize="16sp" />
+
+                    <com.example.mrqin.myapplication.view.custom.RatingBar xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/work_star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:clickable="false"
+                        app:space="0.4"
+                        app:starDst="@mipmap/bazi_ic_star_2"
+                        app:starNumber="5"
+                        app:starSrc="@mipmap/bazi_ic_star_1"
+                        app:step="1" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lucky_num"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/lucky_num"
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+                        android:text="2"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lucky_time_color"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/lucky_time_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/luck_all_star"
+                android:padding="8dp"
+                android:text="@string/day_notice"
+                android:textColor="#00b2bf"
                 android:textSize="16sp" />
 
-            <com.example.mrqin.myapplication.view.custom.RatingBar
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/summary_star"
+            <TextView
+                android:id="@+id/day_notice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:clickable="false"
-                app:space="0.4"
-                app:starDst="@mipmap/bazi_ic_star_2"
-                app:starNumber="5"
-                app:starSrc="@mipmap/bazi_ic_star_1"
-                app:step="1" />
+                android:padding="8dp"
+                android:text="@string/day_notice"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="@string/general_txt"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/general_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="@string/day_notice"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="@string/love_txt"
+                android:textColor="#EEA9B8"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/love_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="@string/day_notice"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="@string/money_txt"
+                android:textColor="	#4876FF"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/money_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="@string/day_notice"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="@string/work_txt"
+                android:textColor="#009ACD"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/work_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="@string/day_notice"
+                android:textSize="16sp" />
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:orientation="horizontal"
-            android:padding="8dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/luck_love_star"
-                android:textSize="16sp" />
-
-            <com.example.mrqin.myapplication.view.custom.RatingBar
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/love_star"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:clickable="false"
-                app:space="0.4"
-                app:starDst="@mipmap/bazi_ic_star_2"
-                app:starNumber="5"
-                app:starSrc="@mipmap/bazi_ic_star_1"
-                app:step="1" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:orientation="horizontal"
-            android:padding="8dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/luck_money_star"
-                android:textSize="16sp" />
-
-            <com.example.mrqin.myapplication.view.custom.RatingBar
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/money_star"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:clickable="false"
-                app:space="0.4"
-                app:starDst="@mipmap/bazi_ic_star_2"
-                app:starNumber="5"
-                app:starSrc="@mipmap/bazi_ic_star_1"
-                app:step="1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:orientation="horizontal"
-            android:padding="8dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/luck_work_star"
-                android:textSize="16sp" />
-
-            <com.example.mrqin.myapplication.view.custom.RatingBar
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/work_star"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:clickable="false"
-                app:space="0.4"
-                app:starDst="@mipmap/bazi_ic_star_2"
-                app:starNumber="5"
-                app:starSrc="@mipmap/bazi_ic_star_1"
-                app:step="1" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:orientation="horizontal"
-            android:padding="8dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lucky_num"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/lucky_num"
-                android:layout_width="wrap_content"
-
-                android:layout_height="wrap_content"
-                android:text="2"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:orientation="horizontal"
-            android:padding="8dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lucky_time_color"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/lucky_time_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="@string/day_notice"
-        android:textColor="#00b2bf"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/day_notice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="@string/day_notice"
-        android:textSize="16sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="@string/general_txt"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/general_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="@string/day_notice"
-        android:textSize="16sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="@string/love_txt"
-        android:textColor="#EEA9B8"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/love_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="@string/day_notice"
-        android:textSize="16sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="@string/money_txt"
-        android:textColor="	#4876FF"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/money_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="@string/day_notice"
-        android:textSize="16sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="@string/work_txt"
-        android:textColor="#009ACD"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/work_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="@string/day_notice"
-        android:textSize="16sp" />
-
+    </ScrollView>
 </LinearLayout>
 
 
