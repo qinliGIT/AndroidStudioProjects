@@ -1,5 +1,6 @@
 package com.example.mrqin.myapplication.view.lottery;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -9,6 +10,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +28,7 @@ import com.example.mrqin.myapplication.model.LuckAdapterBean;
 import com.example.mrqin.myapplication.model.LuckBean;
 import com.example.mrqin.myapplication.utils.APPID;
 import com.example.mrqin.myapplication.utils.NetworkUtil;
+import com.example.mrqin.myapplication.utils.TextViewUtils;
 import com.example.mrqin.myapplication.view.BaseActivity;
 import com.example.mrqin.myapplication.view.custom.RatingBar;
 import com.google.gson.Gson;
@@ -46,7 +49,6 @@ import java.util.zip.Inflater;
 public class LuckMoreAc extends BaseActivity {
     private MyHandler mHandler;
     private ImageView ll_TitleBar_back;
-//    private RecyclerView mRecyclerView;
 
     TabLayout tabLayout;
     ViewPager vp;
@@ -57,18 +59,19 @@ public class LuckMoreAc extends BaseActivity {
             "本月",
             "今年"
     };
+    private Resources res;
+    private int[] item_constellation_img;
+    private String[] item_more_constellation_txt;
+
     private static List<LuckAdapterBean> mData = new ArrayList<>();
 
     private RelativeLayout noNetLayout;
     private Button refreshBtn;
 
     private static LuckBean luckBean;
-    private static List<LuckBean.ShowapiResBodyBean.DayBean> mList = new ArrayList<>();
-    ;
-    private LuckAdapter mAdapter;
 
-    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS", Locale.getDefault());
     private String lotteryName = "ssq";
+    private int position = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +81,22 @@ public class LuckMoreAc extends BaseActivity {
         if (lotteryName == null) {
             lotteryName = "ssq";
         }
+        position = getIntent().getIntExtra("position",0);
         init();
+        initData();
+    }
+
+    private void initData() {
+        res = getResources();
+        item_constellation_img = new int[]{R.mipmap.love_ic_aries,
+                R.mipmap.love_ic_taurus, R.mipmap.love_ic_gemin,
+                R.mipmap.love_ic_cancer, R.mipmap.love_ic_leo,
+                R.mipmap.love_ic_virgo, R.mipmap.love_ic_libra,
+                R.mipmap.love_ic_scorpio, R.mipmap.love_ic_sagittarius,
+                R.mipmap.love_ic_capricornus, R.mipmap.love_ic_aquarius,
+                R.mipmap.love_ic_pisces};
+        item_more_constellation_txt = res
+                .getStringArray(R.array.ac_marry_constellation);
     }
 
     private void init() {
@@ -108,9 +126,6 @@ public class LuckMoreAc extends BaseActivity {
         tabLayout = findViewById(R.id.tabLayout);
         vp = findViewById(R.id.vp_content);
 
-//        mRecyclerView = (RecyclerView) findViewById(R.id.id_recyclerview_luck_more);
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(LuckMoreAc.this));
-
         startGetData();
     }
 
@@ -129,7 +144,7 @@ public class LuckMoreAc extends BaseActivity {
                 String appid = APPID.APP_ID;//要替换成自己的
                 String secret = APPID.APP_SCREAT;//要替换成自己的
                 final String res = new ShowApiRequest("http://route.showapi.com/872-1", appid, secret)
-                        .addTextPara("star", "shizi")
+                        .addTextPara("star", TextViewUtils.getStar(position))
                         .addTextPara("needTomorrow", "1")
                         .addTextPara("needWeek", "1")
                         .addTextPara("needMonth", "1")
@@ -142,7 +157,6 @@ public class LuckMoreAc extends BaseActivity {
     }
 
     private void setData() {
-//        mRecyclerView.setAdapter(mAdapter = new LuckAdapter(LuckMoreAc.this, luckBean));
         MyAdapter adapter = new MyAdapter();
         vp.setAdapter(adapter);
         tabLayout.setupWithViewPager(vp);

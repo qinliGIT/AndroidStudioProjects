@@ -54,12 +54,8 @@ public class LuckyFrag extends Fragment {
         luck_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                LotteryAdapterBean bean = mDataAd.get(position);
                 Intent in = new Intent(getActivity(), LuckMoreAc.class);
-//                in.putExtra("name", bean.getName());
-                switch (i){
-
-                }
+                in.putExtra("position", i);
                 startActivity(in);
             }
         });

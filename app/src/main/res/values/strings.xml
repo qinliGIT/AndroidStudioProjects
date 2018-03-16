@@ -18,7 +18,7 @@
     <string name="love_txt">爱情运势</string>
     <string name="money_txt">财务运势</string>
     <string name="general_txt">整体运势</string>
-    <string name="day_notice">今日注意</string>
+    <string name="day_notice">注意事项</string>
 
 
     <string-array name="ac_marry_constellation">

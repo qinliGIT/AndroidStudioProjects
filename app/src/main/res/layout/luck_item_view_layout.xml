@@ -175,13 +175,29 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="@string/day_notice"
-                android:textColor="#00b2bf"
-                android:textSize="16sp" />
+
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/luck_today" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="4dp"
+                    android:text="@string/day_notice"
+                    android:textColor="#00b2bf"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/day_notice"
@@ -191,12 +207,28 @@
                 android:text="@string/day_notice"
                 android:textSize="16sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="@string/general_txt"
-                android:textSize="16sp" />
+
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/luck_all" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="4dp"
+                    android:text="@string/general_txt"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/general_txt"
@@ -206,13 +238,28 @@
                 android:text="@string/day_notice"
                 android:textSize="16sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="@string/love_txt"
-                android:textColor="#EEA9B8"
-                android:textSize="16sp" />
+
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/luck_love" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="4dp"
+                    android:text="@string/love_txt"
+                    android:textColor="#EEA9B8"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/love_txt"
@@ -222,13 +269,28 @@
                 android:text="@string/day_notice"
                 android:textSize="16sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="@string/money_txt"
-                android:textColor="	#4876FF"
-                android:textSize="16sp" />
+
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/luck_money" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="4dp"
+                    android:text="@string/money_txt"
+                    android:textColor="	#4876FF"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/money_txt"
@@ -238,13 +300,28 @@
                 android:text="@string/day_notice"
                 android:textSize="16sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="@string/work_txt"
-                android:textColor="#009ACD"
-                android:textSize="16sp" />
+
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/luck_work" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="4dp"
+                    android:text="@string/work_txt"
+                    android:textColor="#009ACD"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/work_txt"
