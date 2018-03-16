@@ -8,5 +8,5 @@
     <color name="text_grey">#8E8E8E</color>
     <color name="text_red">#EE2C2C</color>
     <color name="text_blue">#1E90FF</color>
-    <color name="translate">#ffffffff</color>
+    <color name="translate">#00000000</color>
 </resources>
