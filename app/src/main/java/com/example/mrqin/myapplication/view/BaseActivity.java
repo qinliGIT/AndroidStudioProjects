@@ -7,6 +7,6 @@ import android.app.Activity;
  * activity父类，实现极光推送的各生命周期绑定
  */
 
-public class BaseActivity extends Activity{
+public class BaseActivity extends CheckPermissionsActivity{
 
 }

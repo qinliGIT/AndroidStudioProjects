@@ -73,7 +73,6 @@ public class OkhttpUtils {
                 String json = (String) msg.obj;
                 onOKHttpGetListener.success(json);
             }
-
         }
     }
 }

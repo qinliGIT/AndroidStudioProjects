@@ -47,6 +47,7 @@ public class AcLogo extends BaseActivity {
             @Override
             public void error(String error) {
                 Toast.makeText(AcLogo.this, error, Toast.LENGTH_SHORT).show();
+                startThread();
             }
 
             @Override
