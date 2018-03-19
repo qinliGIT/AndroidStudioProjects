@@ -36,6 +36,9 @@
             android:name=".view.lottery.LotteryMoreAc"
             android:screenOrientation="portrait"/>
         <activity
+            android:name=".view.lottery.LuckMoreAc"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".view.MyWebView"
             android:screenOrientation="portrait"/>
 
