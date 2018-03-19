@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">My Application</string>
     <string name="title_home">开奖查询</string>
     <string name="title_dashboard">我的运势</string>
     <string name="title_notifications">我的小Q</string>

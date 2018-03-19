@@ -1,0 +1,24 @@
+ext {
+    domain = [
+            //apk检测升级的主域名字段的值
+            DOMAIN_UPDATE_1: "",
+            //apk检测升级的备用域名字段
+            DOMAIN_UPDATE_2: "",
+
+
+    ]
+    attr = [
+            //是否调试字段，在打包发布时，请将此字段置为false
+            isDebug: true
+
+    ]
+
+    minSdkVersion = 15
+    targetSdkVersion = 22
+    compileSdkVersion = 27
+    buildToolsVersion = '27.0.0'
+    supportVersion = "27.0.0"
+    versionCode = '1.0.0'
+    versionName = '1'
+
+}
