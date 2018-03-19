@@ -69,6 +69,8 @@ public class RobotFrag extends Fragment {
 //        mRecyclerView.setAdapter(robotAdapter);
 //        robotAdapter.setData(mMsgData);
 
+        //搞事情
+
         mRobotAdapter = new RobotListAdapter(getActivity().getApplicationContext(), R.layout.item_robot_view, mMsgData);
         mLvMsg.setAdapter(mRobotAdapter);
 
