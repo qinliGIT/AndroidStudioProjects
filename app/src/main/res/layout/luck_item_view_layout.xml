@@ -332,7 +332,7 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="4dp"
                     android:text="@string/money_txt"
-                    android:textColor="	#4876FF"
+                    android:textColor="#4876FF"
                     android:textSize="16sp" />
             </LinearLayout>
 
