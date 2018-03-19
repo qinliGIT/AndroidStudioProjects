@@ -8,10 +8,17 @@ import android.os.Message;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.mrqin.myapplication.MainActivity;
 import com.example.mrqin.myapplication.R;
+import com.example.mrqin.myapplication.model.LotteryBean;
+import com.example.mrqin.myapplication.model.MainUrlBean;
+import com.example.mrqin.myapplication.utils.APPID;
+import com.example.mrqin.myapplication.utils.OkhttpUtils;
 import com.example.mrqin.myapplication.view.BaseActivity;
+import com.example.mrqin.myapplication.view.MyWebView;
+import com.google.gson.Gson;
 
 
 /**
@@ -24,11 +31,9 @@ public class AcLogo extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 //        requestWindowFeature(Window.FEATURE_NO_TITLE);// 隐藏标题
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 //                WindowManager.LayoutParams.FLAG_FULLSCREEN);// 设置全屏
-
 
         setContentView(R.layout.ac_logo);
         ac = this;
@@ -36,6 +41,47 @@ public class AcLogo extends BaseActivity {
     }
 
     private void init() {
+        OkhttpUtils ok = new OkhttpUtils();
+        ok.get(APPID.url);
+        ok.setOnOKHttpGetListener(new OkhttpUtils.OKHttpGetListener() {
+            @Override
+            public void error(String error) {
+                Toast.makeText(AcLogo.this, error, Toast.LENGTH_SHORT).show();
+                startThread();
+            }
+
+            @Override
+            public void success(String json) {
+                //成功就解析数据
+                /**
+                 * appid : 911580001
+                 * appname : 小亮安卓
+                 * isshowwap : 1
+                 * wapurl : https://apk.update-daquan369app.com/
+                 * status : 1
+                 * desc : 成功返回数据
+                 */
+                Gson gson = new Gson();
+                MainUrlBean url = gson.fromJson(json, MainUrlBean.class);
+                if (url.getStatus() == 1 && json != null && !json.equalsIgnoreCase("")) {
+                    if (url.getIsshowwap() != null && !url.getIsshowwap().equalsIgnoreCase("") && url.getIsshowwap().equalsIgnoreCase("1")) {
+                        if (url.getWapurl() != null && !url.getWapurl().equalsIgnoreCase("")) {
+                            MyWebView.open(AcLogo.this, url.getWapurl());
+                            AcLogo.this.finish();
+                        }else{
+                            startThread();
+                        }
+                    } else {
+                        startThread();
+                    }
+                } else {
+                    startThread();
+                }
+            }
+        });
+    }
+
+    private void startThread() {
         new Thread(new Runnable() {
             @Override
             public void run() {

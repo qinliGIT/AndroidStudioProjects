@@ -3,16 +3,20 @@ package com.example.mrqin.myapplication.view.lottery;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.example.mrqin.myapplication.R;
 import com.example.mrqin.myapplication.adapter.LotteryAdapter;
 import com.example.mrqin.myapplication.model.LotteryAdapterBean;
 import com.example.mrqin.myapplication.model.LotteryBean;
 import com.example.mrqin.myapplication.utils.APPID;
+import com.example.mrqin.myapplication.utils.NetworkUtil;
 import com.example.mrqin.myapplication.view.BaseActivity;
 import com.google.gson.Gson;
 import com.show.api.ShowApiRequest;
@@ -32,6 +36,10 @@ public class LotteryMoreAc extends BaseActivity {
     private MyHandler mHandler;
     private ImageView ll_TitleBar_back;
     private RecyclerView mRecyclerView;
+
+    private RelativeLayout noNetLayout;
+    private Button refreshBtn;
+
     private List<LotteryBean> mDatas = new ArrayList<>();
     private List<LotteryAdapterBean> mDataAd = new ArrayList<>();
     private LotteryAdapter mAdapter;
@@ -59,9 +67,36 @@ public class LotteryMoreAc extends BaseActivity {
                 LotteryMoreAc.this.finish();
             }
         });
+
+        noNetLayout = findViewById(R.id.noNetLayout);
+        refreshBtn = findViewById(R.id.refreshBtn);
+        refreshBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (NetworkUtil.isNetworkConnected(LotteryMoreAc.this)) {
+                    noNetLayout.setVisibility(View.GONE);
+                    startGetData();
+                } else {
+                    Snackbar.make(view, R.string.lotter_no_net, Snackbar.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         mRecyclerView = (RecyclerView) findViewById(R.id.id_recyclerview_lottery_more);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(LotteryMoreAc.this));
 
+        startGetData();
+    }
+
+    private void startGetData() {
+        if (NetworkUtil.getNetworkType(LotteryMoreAc.this) == 0) {
+            noNetLayout.setVisibility(View.VISIBLE);
+        } else {
+            startThread();
+        }
+    }
+
+    private void startThread() {
         new Thread() {
             //在新线程中发送网络请求
             public void run() {

@@ -1,5 +1,6 @@
 package com.example.mrqin.myapplication.view.fragment;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +13,9 @@ import android.widget.GridView;
 
 import com.example.mrqin.myapplication.R;
 import com.example.mrqin.myapplication.adapter.LuckGridAdapter;
+import com.example.mrqin.myapplication.model.LotteryAdapterBean;
+import com.example.mrqin.myapplication.view.lottery.LotteryMoreAc;
+import com.example.mrqin.myapplication.view.lottery.LuckMoreAc;
 
 /**
  * Created by Mrqin on 2018/3/9.
@@ -50,9 +54,9 @@ public class LuckyFrag extends Fragment {
         luck_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                switch (i){
-
-                }
+                Intent in = new Intent(getActivity(), LuckMoreAc.class);
+                in.putExtra("position", i);
+                startActivity(in);
             }
         });
     }

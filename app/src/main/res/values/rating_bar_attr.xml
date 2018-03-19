@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 自定义的ratingBar -->
+    <declare-styleable name="RatingBar">
+
+        <!-- 选中的图片资源 -->
+        <attr name="starSrc" format="reference" />
+        <!-- 未选中的图片资源 -->
+        <attr name="starDst" format="reference" />
+        <!-- boolean值 -->
+        <attr name="clickable" format="boolean" />
+        <attr name="step" format="float" />
+        <attr name="space" format="float" />
+        <attr name="starNumber" format="integer" />
+    </declare-styleable>
+
+</resources>
