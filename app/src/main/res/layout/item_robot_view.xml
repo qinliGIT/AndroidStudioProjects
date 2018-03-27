@@ -15,7 +15,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/head_robot" />
+            android:background="@mipmap/h2" />
 
         <LinearLayout
 
@@ -63,6 +63,6 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/head_me" />
+            android:background="@mipmap/me" />
     </LinearLayout>
 </LinearLayout>

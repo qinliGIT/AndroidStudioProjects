@@ -74,7 +74,7 @@ public class LotteryAdapter extends RecyclerView.Adapter<LotteryAdapter.MyViewHo
         circleTextView.setGravity(Gravity.CENTER);
         circleTextView.setPadding(16, 16, 16, 16);
         circleTextView.setTextColor(mContext.getResources().getColor(R.color.text_white));
-//        circleTextView.setBackground(isRed ? mContext.getResources().getDrawable(R.drawable.circle_lottery_shape_red) : mContext.getResources().getDrawable(R.drawable.circle_lottery_shape_blue));
+        circleTextView.setBackground(isRed ? mContext.getResources().getDrawable(R.drawable.circle_lottery_shape_red) : mContext.getResources().getDrawable(R.drawable.circle_lottery_shape_blue));
         circleTextView.setText(lotteryNums[i]);
         return circleTextView;
     }

@@ -31,6 +31,8 @@
 
         <activity
             android:name=".MainActivity"
+            android:configChanges="keyboard"
+            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".view.lottery.LotteryMoreAc"

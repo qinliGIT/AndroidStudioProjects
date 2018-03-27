@@ -5,7 +5,7 @@ package com.example.mrqin.myapplication.utils;
  */
 
 public class APPID {
-    public static String url = "https://appid-apkk.xx-app.com/frontApi/getAboutUs?appid=91158001";
+    public static String url = "https://appid-apkk.xx-app.com/frontApi/getAboutUs?appid=630522125";
 
     public static final String TURING_ID = "59310";
     public static final String TURING_SCREAT = "9048743cef4b47f693d913753c2a206e";

@@ -28,8 +28,8 @@ import java.util.List;
  */
 public class AcLeadPage extends BaseActivity {
 
-    private int[] images = {R.drawable.ic_launcher_background, R.drawable.ic_launcher_background,
-            R.drawable.ic_launcher_background, R.drawable.ic_launcher_background};
+    private int[] images = {R.mipmap.logo_1, R.mipmap.logo_2,
+            R.mipmap.logo_3, R.mipmap.logo_4};
 
     private ViewPager vp_pager;
     private int currentPage;
