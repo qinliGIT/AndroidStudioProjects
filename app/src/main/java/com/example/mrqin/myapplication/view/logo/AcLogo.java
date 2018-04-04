@@ -41,18 +41,26 @@ public class AcLogo extends BaseActivity {
     }
 
     private void init() {
-        OkhttpUtils ok = new OkhttpUtils();
-        ok.get(APPID.url);
-        ok.setOnOKHttpGetListener(new OkhttpUtils.OKHttpGetListener() {
+        OkhttpUtils.getInstance().Get(APPID.url, new OkhttpUtils.ResultCallBackListener() {
             @Override
-            public void error(String error) {
-                Toast.makeText(AcLogo.this, error, Toast.LENGTH_SHORT).show();
-                startThread();
+            public void noNetWork() {
+
             }
 
             @Override
-            public void success(String json) {
-                //成功就解析数据
+            public void onLoadingShow() {
+
+            }
+
+            @Override
+            public void onLoadingDismiss() {
+
+            }
+
+            @Override
+            public void onSuccess(String requestname, String result_str) {
+                String json = result_str;
+//成功就解析数据
                 /**
                  * appid : 911580001
                  * appname : 小亮安卓
@@ -68,7 +76,7 @@ public class AcLogo extends BaseActivity {
                         if (url.getWapurl() != null && !url.getWapurl().equalsIgnoreCase("")) {
                             MyWebView.open(AcLogo.this, url.getWapurl());
                             AcLogo.this.finish();
-                        }else{
+                        } else {
                             startThread();
                         }
                     } else {
@@ -77,6 +85,17 @@ public class AcLogo extends BaseActivity {
                 } else {
                     startThread();
                 }
+            }
+
+            @Override
+            public void onFailure(String requestname, Exception e) {
+
+            }
+
+            @Override
+            public void onError(String requestname, String result_str) {
+                Toast.makeText(AcLogo.this, result_str, Toast.LENGTH_SHORT).show();
+                startThread();
             }
         });
     }

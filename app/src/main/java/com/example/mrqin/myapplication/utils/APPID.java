@@ -14,4 +14,6 @@ public class APPID {
     /*获取网络数据*/
     public static final int MSG_DATA_SUCCESS_LOTTERY_FRG = 0X001;
 
+    public static final int MSG_DATA_SUCCESS_NOTIFY_FRG = 0X002;
+
 }

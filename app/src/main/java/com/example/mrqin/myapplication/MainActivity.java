@@ -17,6 +17,7 @@ import com.example.mrqin.myapplication.adapter.TabFragmentPagerAdapter;
 import com.example.mrqin.myapplication.jpush.JPushManager;
 import com.example.mrqin.myapplication.view.fragment.LotteryFrag;
 import com.example.mrqin.myapplication.view.fragment.LuckyFrag;
+import com.example.mrqin.myapplication.view.fragment.NotificationFrg;
 import com.example.mrqin.myapplication.view.fragment.RobotFrag;
 import com.mrqin.jpush.ExampleUtil;
 import com.mrqin.jpush.LocalBroadcastManager;
@@ -90,7 +91,8 @@ public class MainActivity extends AppCompatActivity {
 
         //把Fragment添加到List集合里面
         list = new ArrayList<>();
-        list.add(new LotteryFrag());
+//        list.add(new LotteryFrag());
+        list.add(new NotificationFrg());
         list.add(new LuckyFrag());
         list.add(new RobotFrag());
         adapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), list);
